@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const steps = document.querySelectorAll('.step');
     const toStep2Button = document.getElementById('toStep2');
     const toStep3Button = document.getElementById('toStep3');
+    const backToStep1Button = document.getElementById('backToStep1'); // step2에서 이전으로 가는 버튼
+    const backToStep2Button = document.getElementById('backToStep2'); // step3에서 이전으로 가는 버튼
     const submitButton = document.getElementById('submit');
     const zipFileInput = document.getElementById('zipFile');
     const previewIframe = document.getElementById('preview');
@@ -31,14 +33,24 @@ document.addEventListener('DOMContentLoaded', () => {
             step.style.display = index === stepIndex ? 'block' : 'none';
         });
     }
-
+    
     toStep2Button.addEventListener('click', () => {
         currentStep = 1;
         showStep(currentStep);
     });
-
+    
+    backToStep1Button.addEventListener('click', () => {
+        currentStep = 0;
+        showStep(currentStep);
+    });
+    
     toStep3Button.addEventListener('click', () => {
         currentStep = 2;
+        showStep(currentStep);
+    });
+    
+    backToStep2Button.addEventListener('click', () => {
+        currentStep = 1;
         showStep(currentStep);
     });
 
