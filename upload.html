@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3-Step Modal Upload with Zip</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+</head>
+<body>
+    <!-- Trigger Button -->
+    <button id="openModal" class="modal-trigger">Upload Zip</button>
+
+    <!-- Modal Structure -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="closeModal">&times;</span>
+            <div id="step1" class="step">
+                <h2>Step 1: 포트폴리오 Zip 파일로 올려주세요.</h2>
+                <input type="file" id="zipFile" accept=".zip">
+                <button id="toStep2" class="modal-button">다음</button>
+            </div>
+            <div id="step2" class="step">
+                <h2>Step 2: index.html 프리뷰/ 썸네일 추가(선택)</h2>
+                <iframe id="preview"></iframe>
+                <input type="file" id="thumbnailFile" accept="image/*">
+                <button id="toStep3" class="modal-button">다음</button>
+            </div>
+            <div id="step3" class="step">
+                <h2>Step 3: 설명, 태그 추가</h2><br>
+                <h3>설명</h3>
+                <textarea id="description" placeholder="Enter description" class="modal-textarea"></textarea>
+                <h3>태그</h3>
+                <textarea id="tags" placeholder="Enter tags" class="modal-textarea"></textarea>
+                <button id="submit" class="modal-button">업로드</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/scripts.js"></script>
+</body>
+</html>

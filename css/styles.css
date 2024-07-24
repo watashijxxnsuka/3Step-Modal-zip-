@@ -1,0 +1,110 @@
+/* styles.css */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+.modal-trigger {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 18px;
+  margin: 20px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.modal-trigger:hover {
+  background-color: #0056b3;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 2% auto;
+  padding: 50px;
+  border: 1px solid #888;
+  width: 95%;
+  max-width: 1200px;
+  height: 75%;
+  overflow-y: auto;
+  box-shadow: 0 5px 15px rgba(0,0,0,.5);
+  border-radius: 10px;
+}
+
+.close-button {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.step {
+  display: none;
+}
+
+#step1 {
+  display: block;
+}
+
+button {
+  margin-top: 20px;
+}
+
+iframe {
+  width: 100%;
+  height: 70vh; /* 화면 높이의 70%로 설정 */
+  border: none;
+  overflow-y: auto; /* 스크롤 가능하도록 설정 */
+}
+
+textarea {
+  width: 100%;
+  font-size: 18px; /* 폰트 크기 조정 */
+  padding: 10px; /* 패딩 추가 */
+  margin-bottom: 20px;
+  box-sizing: border-box; /* 테두리를 포함한 크기 설정 */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: vertical; /* 수직 크기 조정 가능 */
+  min-height: 100px; /* 최소 높이 설정 */
+}
+
+.modal-button {
+  width: 100%;
+  padding: 15px;
+  font-size: 18px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.modal-button:hover {
+  background-color: #0056b3;
+}
