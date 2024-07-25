@@ -5,11 +5,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const steps = document.querySelectorAll('.step');
     const toStep2Button = document.getElementById('toStep2');
     const toStep3Button = document.getElementById('toStep3');
-    const backToStep1Button = document.getElementById('backToStep1'); // step2에서 이전으로 가는 버튼
-    const backToStep2Button = document.getElementById('backToStep2'); // step3에서 이전으로 가는 버튼
+    const backToStep1Button = document.getElementById('backToStep1');
+    const backToStep2Button = document.getElementById('backToStep2');
     const submitButton = document.getElementById('submit');
     const zipFileInput = document.getElementById('zipFile');
+    const thumbnailFileInput = document.getElementById('thumbnailFile');
     const previewIframe = document.getElementById('preview');
+    const previewStep3Iframe = document.getElementById('previewStep3');
+    const thumbnailPreview = document.getElementById('thumbnailPreview');
 
     let currentStep = 0;
     let fileMap = {};
@@ -47,6 +50,11 @@ document.addEventListener('DOMContentLoaded', () => {
     toStep3Button.addEventListener('click', () => {
         currentStep = 2;
         showStep(currentStep);
+        const previewContent = previewIframe.contentWindow.document.documentElement.innerHTML;
+        const iframeDocStep3 = previewStep3Iframe.contentDocument || previewStep3Iframe.contentWindow.document;
+        iframeDocStep3.open();
+        iframeDocStep3.write(previewContent);
+        iframeDocStep3.close();
     });
     
     backToStep2Button.addEventListener('click', () => {
@@ -102,7 +110,6 @@ document.addEventListener('DOMContentLoaded', () => {
                             });
 
                             fetch(fileMap['index.html']).then(response => response.text()).then(html => {
-                                // Replace image sources with blob URLs
                                 const parser = new DOMParser();
                                 const doc = parser.parseFromString(html, 'text/html');
                                 doc.querySelectorAll('img').forEach(img => {
@@ -124,6 +131,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
         } else {
             alert('Please upload a valid zip file.');
+        }
+    });
+
+    thumbnailFileInput.addEventListener('change', (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                thumbnailPreview.src = e.target.result;
+                thumbnailPreview.style.display = 'block';
+            };
+            reader.readAsDataURL(file);
         }
     });
 
